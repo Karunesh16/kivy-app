@@ -1,0 +1,254 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import Gradient kivy_gradient.Gradient
+
+<MainScreen>:
+    orientation: 'vertical'
+    #size: root.width, root.height
+    #on_kv_post: print(get_color_from_hex("E91E63"))
+    canvas.before:
+        
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            texture: Gradient.vertical(get_color_from_hex("ffc10f"),get_color_from_hex("ffff00"))
+    #padding: 40, 35
+    
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: '100dp'
+            padding: 10, 10
+
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    texture: Gradient.vertical(get_color_from_hex("ffc10f"), get_color_from_hex("ffff00"))
+
+            
+            
+            Image:
+                source: 'assets/mrdiy logo.jpg'  # Path to the center logo
+                size_hint: .05, 1
+                allow_stretch: True
+                keep_ratio: True
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}    
+
+
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 20
+            padding: 40, 0
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [25]
+                padding: 20, 20
+                BoxLayout:
+                    orientation: 'vertical'
+                    Image:
+                        id: slideshow
+                        source: 'assets/slideshow-1.jpg'  # Path to the first image in the slideshow
+                        allow_stretch: True
+                        size_hint: (1, 1)
+                        fit_mode: "fill"
+
+            BoxLayout:
+                orientation: 'vertical'
+                Image:
+                    id: gif
+                    source: 'assets/gif_1-removebg-preview.png'  # Path to the placeholder image
+                    anim_delay: 0.1
+                    allow_stretch: True
+                    size_hint: (1, 1)
+                    #fit_mode: "fill"
+
+        Label:
+            canvas.before: 
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    texture: Gradient.vertical(get_color_from_hex("ffff00"),get_color_from_hex("ffc10f"))
+
+            text: 'Copyright © 2024 Dua Lima Retail Private Limited | MR.DIY All rights reserved.'
+            size_hint_y: None
+            color: 133/255, 133/255, 133/255, .8
+            height: '24dp'
+            font_size: '16dp'
+            halign: 'center'
+            valign: 'middle'
+
+<SecondScreen>:
+    orientation: 'vertical'
+    #size: root.width, root.height
+    #on_kv_post: print(get_color_from_hex("E91E63"))
+    canvas.before:
+        
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            texture: Gradient.vertical(get_color_from_hex("ffc10f"),get_color_from_hex("ffff00"))
+    #padding: 40, 35
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: '100dp'
+            padding: 10, 10
+
+
+            canvas.before:
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    texture: Gradient.vertical(get_color_from_hex("ffc10f"), get_color_from_hex("ffff00"))
+
+
+            Image:
+                source: 'assets/mrdiy logo.jpg'  # Path to the center logo
+                size_hint: .05, 1
+                allow_stretch: True
+                keep_ratio: True
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}    
+
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 20
+            padding: 40, 0
+        
+
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [25]
+                padding: 20, 20
+                BoxLayout:
+                    orientation: 'vertical'
+                    Image:
+                        id: product_image
+                        source: 'assets/DIY-Infiniti-Mall-Malad.jpg'  # Path to the default product image
+                        allow_stretch: True
+                        size_hint: (1, 1)
+                        fit_mode: "fill"
+
+            StackLayout:
+                orientation: 'lr-tb'
+                padding: 20, 20
+                spacing: 20
+                
+                Label:
+                    id: lab1
+                    text: 'Barcode ID:'
+                    size_hint_y: None
+                    height: self.texture_size[1] if self.texture_size[1] > 48 else '48dp'  # Adjust height dynamically
+                    text_size: self.width, None
+                    font_size: '24dp'
+                    halign: 'center'
+                    valign: 'middle'
+                    size: self.size
+                    color: 0, 0, 0, 1  # Black text color
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1  # White background
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10]
+
+                Label:
+                    id: lab2
+                    text: 'Product Name:'
+                    size_hint_y: None
+                    height: self.texture_size[1] if self.texture_size[1] > 48 else '48dp'  # Adjust height dynamically
+                    text_size: self.width, None
+                    font_size: '24dp'
+                    halign: 'center'
+                    valign: 'middle'
+                    size: self.size
+                    color: 0, 0, 0, 1  # Black text color
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1  # White background
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10]
+
+                Label:
+                    id: lab4
+                    text: 'Description:'
+                    size_hint_y: None
+                    height: self.texture_size[1] if self.texture_size[1] > 48 else '48dp'  # Adjust height dynamically
+                    text_size: self.width, None
+                    font_size: '24dp'
+                    halign: 'center'
+                    valign: 'middle'
+                    padding: 15, 5
+                    size: self.size
+                    color: 0, 0, 0, 1  # Black text color
+                    canvas.before:
+                        Color:
+                            rgba: 1, 1, 1, 1  # White background
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10]
+
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: '48dp'
+                    
+                    Label:
+                        id: lab3
+                        text: 'Price'
+                        font_size: '30dp'
+                        text_size: self.width, None
+                        bold: True
+                        halign: 'center'
+                        valign: 'middle'
+                        size: self.size
+                        outline_width: 1
+                        color: 1, 0, 0, 1  # Red text color for highlight
+                        canvas.before:
+                            Color:
+                                rgba: 1, 1, 1, 1  # White background
+                            RoundedRectangle:
+                                pos: self.pos
+                                size: self.size
+                                radius: [10]
+
+
+
+
+        Label:
+            canvas.before: 
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    texture: Gradient.vertical(get_color_from_hex("ffff00"),get_color_from_hex("ffc10f"))
+
+            text: 'Copyright © 2024 Dua Lima Retail Private Limited | MR.DIY All rights reserved.'
+            size_hint_y: None
+            color: 133/255, 133/255, 133/255, .8
+            height: '24dp'
+            font_size: '16dp'
+            halign: 'center'
+            valign: 'middle'
